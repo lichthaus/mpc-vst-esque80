@@ -1,0 +1,17 @@
+{
+  "name": "ESQUE80",
+  "manufacturer": "Lichthaus",
+  "version": "0.9.0",
+  "format": "vst2",
+  "kind": "instrument",
+  "uid": "LsE8",
+  "numInputs": 0,
+  "numOutputs": 2,
+  "category": "Synth",
+  "file32": "VST/esque80-arm32.so",
+  "file64": "VST/esque80-arm64.so",
+  "description": "ESQUE80: an 8-voice cross-wave synthesizer with three wavetable oscillators, a 4-pole low-pass filter, four envelopes, three LFOs and a 15-source mod matrix.",
+  "author": "Lichthaus",
+  "url": "",
+  "license": "MIT"
+}
