@@ -102,8 +102,8 @@ Six function keys; press a key again to reach its sub-pages.
 
 ## Known limits
 
-- Developed and tested on one device, an **MPC Key 37 (Gen 2)**. The 32-bit ARM build is
-  included but has not been run on hardware.
+- Tested on an **MPC Key 37 (Gen 2)** (64-bit build) and an **MPC Live II** (32-bit build),
+  both on MPC OS 3.10.1. Other models are untested.
 - The stand-in waves are approximate (see above).
 - Split and layer settings in imported programs are ignored.
 - The MPC keeps decoded panel artwork in memory until it is powered off; restarting the MPC

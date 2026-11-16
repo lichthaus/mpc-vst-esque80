@@ -104,8 +104,8 @@ Six function keys; press a key again to reach its sub-pages.
 
 ## Known limits
 
-- Developed and tested on one device, an **MPC Key 37 (Gen 2)**. The 32-bit ARM build is
-  included but has not been run on hardware.
+- Tested on an **MPC Key 37 (Gen 2)** (64-bit build) and an **MPC Live II** (32-bit build),
+  both on MPC OS 3.10.1. Other models are untested.
 - The stand-in waves are approximate (see above).
 - Split and layer settings in imported programs are ignored.
 - The MPC keeps decoded panel artwork in memory until it is powered off; restarting the MPC
@@ -120,7 +120,7 @@ Releases: https://github.com/lichthaus/mpc-vst-esque80/releases
 - `ESQUE80-0.9.1-mpc-aarch64.zip` and `ESQUE80-0.9.1-mpc-armv7.zip`: the Open MPC catalogue's per-device packages,
   for its Plugin Manager and installers.
 
-Tested on an MPC Key 37 (Gen 2). The 32-bit (armv7) build has not been run on hardware.
+Tested on an MPC Key 37 (Gen 2) and an MPC Live II, both on MPC OS 3.10.1.
 
 ## Building from source
 
