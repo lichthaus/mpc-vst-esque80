@@ -30,31 +30,56 @@ waves at start-up and offers 6 built-in presets plus 40 empty user slots. It pla
 every control works, but the stand-in waves are approximations, so it will not sound like
 the original instrument.
 
-## Adding the original wave data (optional)
+## Using your own wave data (optional)
 
-The original 256 KB wave ROM, its wave table and the factory sound banks belong to their
-copyright holders and are not distributed with ESQUE80. If you have a lawful source for
-them, put these files in the plugin's `Content/sq80/` folder:
+ESQUE80 can load wave data that you supply. None is distributed with it, and this project
+does not provide it or point to a source for it. If you own the original instrument and have
+made your own dump of its ROMs, convert the dump to the files below, put them in the plugin's
+`Content/sq80/` folder and restart the MPC. Without them the stand-in waves are used.
 
-| File | What it is |
+### `wave0.bin`, `wave1.bin`, `wave2.bin`, `wave3.bin`
+
+Raw 8-bit sample memory, exactly 65,536 bytes per file, no header. Together they form one
+256 KB bank: `wave0.bin` at offset `0x00000`, `wave1.bin` at `0x10000`, `wave2.bin` at
+`0x20000`, `wave3.bin` at `0x30000` (the two wave ROMs, then the two expansion sockets).
+Samples are unsigned 8-bit; a zero byte ends a one-shot sample. A missing file leaves its
+64 KB region silent.
+
+### `waves.txt`
+
+A text table that says, for each of the 75 waves, which sample table the oscillator plays in
+each of 16 keyboard ranges (MIDI key number divided by 8). Blank lines and lines starting
+with `#` are ignored.
+
+```
+W <wave 0-74>
+K <range 0-15> <page> <reg> <semi> <fine>
+```
+
+Each `W` line is followed by 16 `K` lines, all values decimal:
+
+| Field | Meaning |
 | --- | --- |
-| `wave0.bin`, `wave1.bin`, `wave2.bin`, `wave3.bin` | the wave ROM, 64 KB each |
-| `waves.txt` | the wave table (which samples each wave uses across the keyboard) |
-| `bankD.pcb` | optional: 40 factory programs as 102-byte program blocks |
-| `bankC.pcb` | optional: up to 128 more programs in the same format |
+| `page` | start of the sample table inside its 64 KB bank, in units of 256 bytes |
+| `reg` | the oscillator chip's wavetable register: bit 7 = bank bit 0, bit 6 = bank bit 1, bits 5-3 = table size code (256 bytes x 2^code, so 256 to 32,768), bits 2-0 = resolution |
+| `semi` | semitone offset of the sample's root pitch (may be negative) |
+| `fine` | fine offset in 1/256 of a semitone, 0 to 255 |
 
-`tools/sq8l_to_card.py`, in the source repository (github.com/lichthaus/mpc-vst-esque80), writes exactly these files from a local checkout of the
-SQ8L sources:
+A table starts at `bank x 65536 + page x 256`. All 75 x 16 = 1,200 `K` lines must be
+present; an incomplete file is rejected and the stand-in waves are used instead. These
+values come from the instrument's own operating-system ROM.
 
-```
-python3 tools/sq8l_to_card.py <path to your SQ8L checkout> <output folder>
-```
+### `bankD.pcb`, `bankC.pcb` (optional)
 
-Copy the `sq80` folder it creates into `Lichthaus - VST - ESQUE80/Content/`, replacing the
-empty one, then restart the MPC. With the banks present, the programs appear in the MPC's
-preset list (P = built-in, D and C = banks, U = user slots).
+Program banks: 102-byte program blocks, one after another, no header. A block is one program
+exactly as the instrument sends it in a SysEx program dump once the nybble pairs are joined
+back into bytes (see the SysEx appendix of the instrument's manual): name 6 bytes, four
+envelopes of 10 bytes, three LFOs of 4 bytes, three oscillators of 10 bytes, 14 bytes of
+voice settings. An "all programs" dump of your own instrument converts directly. Up to 128
+programs per file; they appear in the MPC's preset list as `D01...` and `C01...`, after the
+built-in presets (`P1...`) and before the user slots (`U01...`).
 
-Please do not redistribute those files with the plugin.
+Please do not redistribute wave or program data with the plugin.
 
 ## The panel
 

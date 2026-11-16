@@ -235,7 +235,7 @@ public:
     static mpc::PluginInfo makeInfo()
     {
         mpc::PluginInfo i;
-        i.name = "ESQUE80"; i.version = 900; i.vendor = "Lichthaus";
+        i.name = "ESQUE80"; i.version = 910; i.vendor = "Lichthaus";
         i.uniqueId = MPC_FOURCC('L','s','E','8');
         i.isInstrument = true; i.numInputs = 0; i.numOutputs = 2;
         return i;

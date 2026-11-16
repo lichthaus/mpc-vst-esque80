@@ -4,12 +4,11 @@ ESQUE80 wave data folder
 This folder is empty on purpose. ESQUE80 does not ship any original wave data.
 With nothing here, the plugin builds 75 stand-in waves when it starts and still plays.
 
-To use the original waves, put these files in this folder and restart the MPC:
+If you have made your own dump of the original instrument, these files go here:
 
-  wave0.bin  wave1.bin  wave2.bin  wave3.bin   the wave ROM, 64 KB each
-  waves.txt                                    the wave table
-  bankD.pcb  bankC.pcb                         optional program banks
+  wave0.bin  wave1.bin  wave2.bin  wave3.bin   raw 8-bit wave memory, 65,536 bytes each
+  waves.txt                                    the wave table (text)
+  bankD.pcb  bankC.pcb                         optional program banks (102-byte blocks)
 
-tools/sq8l_to_card.py in the source repository writes them from a local SQ8L checkout:
-  https://github.com/lichthaus/mpc-vst-esque80
-See README for details. Please do not redistribute these files with the plugin.
+The README describes each file format. Restart the MPC after adding them.
+Please do not redistribute these files with the plugin.

@@ -41,14 +41,14 @@ terms as LICENSE.
 ## SQ8L (reference only, no code included)
 
 The pitch, filter, amplifier and modulation behaviour was re-implemented from reading the
-sources of SQ8L (github.com/sq8l-revival/SQ8L), which are published for preservation with no
-licence granted. No SQ8L code is included in ESQUE80.
+sources of the SQ8L project, which are published for preservation with no licence granted.
+No SQ8L code or data is included in ESQUE80.
 
 ## Wave ROM, wave table and factory banks (not included)
 
 The 256 KB wave ROM, the wave table and the factory sound banks of the original instrument
 belong to their copyright holders. They are not part of ESQUE80 and are not distributed with
-it. `tools/sq8l_to_card.py` only reformats files that you supply, for your own use.
+it, and this project provides no tool or source for obtaining them.
 
 ## Reference documents
 

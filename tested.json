@@ -4,5 +4,17 @@
     "device": "MPC Key 37 (Gen2)",
     "firmware": "3.10.1",
     "date": "2026-11-15"
+  },
+  {
+    "version": "0.9.1",
+    "device": "MPC Live II",
+    "firmware": "3.10.1",
+    "date": "2026-11-15"
+  },
+  {
+    "version": "0.9.1",
+    "device": "MPC Key 37 (Gen2)",
+    "firmware": "3.10.1",
+    "date": "2026-11-15"
   }
 ]
